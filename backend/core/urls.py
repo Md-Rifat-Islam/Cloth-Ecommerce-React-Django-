@@ -17,6 +17,7 @@ Including another URLconf
 #---------------------------------------------------------
 # core/urls.py
 from django.contrib import admin
+# from posts.api.views import google_auth
 from django.urls import path, include
 
 urlpatterns = [
@@ -24,5 +25,5 @@ urlpatterns = [
     # path('api/', include('posts.api.urls')),  # Correctly point to posts.api.urls
     path('api/', include('core.api.urls')),
     path('posts/', include('posts.api.urls')),  # Correctly point to posts.urls
-    
+    # path("api/auth/google/", google_auth, name="google_auth"),
 ]

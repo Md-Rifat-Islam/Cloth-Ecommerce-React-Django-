@@ -1,3 +1,5 @@
+#backend/posts/api/serializers.py   
+
 from rest_framework.serializers import ModelSerializer
 from ..models import Post
 from posts.models import User, Profile
@@ -47,16 +49,16 @@ class RegisterSerializer(serializers.ModelSerializer):
     password = serializers.CharField(
         write_only=True, required=True, validators=[validate_password]
     )
-    password2 = serializers.CharField(
+    confirmPassword = serializers.CharField(
         write_only=True, required=True
     )
     
     class Meta:
         model = User
-        fields = ('username', 'email', 'password', 'password2')
+        fields = ('username', 'email', 'password', 'confirmPassword')
         
     def validate(self, attrs):
-        if attrs['password'] != attrs['password2']:
+        if attrs['password'] != attrs['confirmPassword']:
             raise serializers.ValidationError({"password": "Password fields didn't match."})
             
         return attrs
@@ -67,7 +69,7 @@ class RegisterSerializer(serializers.ModelSerializer):
             email=validated_data['email']
         )
         user.set_password(validated_data['password'])
-        # del validated_data['password2']
+        # del validated_data['confirmPassword']
         # user = User.objects.create_user(**validated_data)
         # Profile.objects.create(user=user)
         user.save()
