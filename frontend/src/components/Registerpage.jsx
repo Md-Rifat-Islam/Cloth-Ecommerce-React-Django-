@@ -249,7 +249,7 @@ const StyledWrapper = styled.div`
     width: 50%;
     max-width: 500px;
     border-radius: 20px;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    font-family: -apple-system, Inter, system-ui, Avenir, Helvetica, Arial, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
       Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
     transition: background 0.3s ease;
   }

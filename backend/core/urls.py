@@ -19,11 +19,13 @@ Including another URLconf
 from django.contrib import admin
 # from posts.api.views import google_auth
 from django.urls import path, include
+from posts.api.views import TestView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     # path('api/', include('posts.api.urls')),  # Correctly point to posts.api.urls
     path('api/', include('core.api.urls')),
     path('posts/', include('posts.api.urls')),  # Correctly point to posts.urls
+    path('posts/test/', TestView.as_view(), name='test'),
     # path("api/auth/google/", google_auth, name="google_auth"),
 ]

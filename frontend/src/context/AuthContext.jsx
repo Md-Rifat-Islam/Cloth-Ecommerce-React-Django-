@@ -58,7 +58,8 @@ export const AuthProvider = ({ children }) => {
     } catch (error) {
       console.error("Login error:", error);
       swal.fire({
-        title: "Username or password incorrect",
+        title: "Username/password incorrect",
+        text: error.message,
         icon: "error",
         toast: true,
         timer: 3000,
@@ -99,18 +100,18 @@ export const AuthProvider = ({ children }) => {
     } catch (error) {
       console.error("Registration error:", error);
       swal.fire({
-          title: "An Error Occurred",
-          text: error.message,
-          icon: "error",
-          toast: true,
-          timer: 3000,
-          position: "top-right",
-          timerProgressBar: true,
-          showConfirmButton: false,
+        title: "An Error Occurred",
+        text: error.message,
+        icon: "error",
+        toast: true,
+        timer: 3000,
+        position: "top-right",
+        timerProgressBar: true,
+        showConfirmButton: false,
       });
-    //   console.log(error); // Check the exact structure of the error message returned by the API
-    //   const errorMessage = error.detail || "Registration failed";
-    //   throw new Error(errorMessage);
+      //   console.log(error); // Check the exact structure of the error message returned by the API
+      //   const errorMessage = error.detail || "Registration failed";
+      //   throw new Error(errorMessage);
     }
   };
 
