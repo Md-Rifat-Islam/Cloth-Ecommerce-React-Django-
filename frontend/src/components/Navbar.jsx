@@ -1,18 +1,20 @@
 // frontend/src/components/Navbar.jsx
 
-import { useContext } from "react";
-import { jwtDecode } from "jwt-decode"; // Fixed import
+import { useContext, useState } from "react";
+import { jwtDecode } from "jwt-decode";
 import AuthContext from "../context/AuthContext";
 import { Link } from "react-router-dom";
+import { FaSearch, FaBell, FaBars, FaUserCircle } from "react-icons/fa";
 
 function Navbar() {
   const { user, logoutUser } = useContext(AuthContext);
-  const token = localStorage.getItem("authTokens");
+  const [menuOpen, setMenuOpen] = useState(false);
 
+  const token = localStorage.getItem("authTokens");
   let user_id = null;
   if (token) {
     try {
-      const decoded = jwtDecode(JSON.parse(token).access); // Ensure token is parsed correctly
+      const decoded = jwtDecode(JSON.parse(token).access);
       user_id = decoded.user_id;
     } catch (error) {
       console.error("Error decoding token:", error);
@@ -20,73 +22,144 @@ function Navbar() {
   }
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
-      <div className="container-fluid">
-        <Link className="navbar-brand" to="/">
+    <nav
+      className="navbar navbar-expand-lg navbar-dark fixed-top"
+      // style={{ backgroundColor: "#FF6B6B", boxShadow: "0 2px 10px rgba(0, 0, 0, 0.1)" }}
+      // style={{ backgroundColor: "rgb(255,150,26)" }}
+      style={{ backgroundColor: "#ff8c00" }}
+    >
+      <div className="container-fluid d-flex align-items-center">
+        {/* Logo */}
+        <Link className="navbar-brand d-flex align-items-center" to="/">
           <img
-            style={{ width: "60px", padding: "1px" }}
             src="./src/assets/cart.png"
             alt="Logo"
+            width="40"
+            height="40"
+            className="me-2"
           />
+          <span className="fw-bold text-white">Easy Purchase</span>
         </Link>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav">
-            {/* <li className="nav-item">
-              <Link className="nav-link active" to="/">
-                Home
-              </Link>
-            </li> */}
 
-            {!token ? (
-              <>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/login">
-                    Login
+        {/* Large Screen Search Bar */}
+        <div className="mx-3 flex-grow-1 d-none d-md-flex align-items-center">
+          <form className="d-flex w-50">
+            <input
+              className="form-control form-control-sm rounded-pill"
+              type="search"
+              placeholder="Search products..."
+              aria-label="Search"
+              style={{ border: "none" }}
+            />
+            <button
+              className="btn btn-light btn-sm ms-2 rounded-pill"
+              type="submit"
+              // style={{ padding: "0.25rem 1rem" }}
+            >
+              <FaSearch />
+            </button>
+          </form>
+        </div>
+
+        {/* Mobile Menu Button */}
+        <button
+          className="btn btn-light btn-sm d-lg-none ms-auto rounded-circle"
+          onClick={() => setMenuOpen(!menuOpen)}
+          style={{ width: "40px", height: "40px" }}
+        >
+          <FaBars />
+        </button>
+
+        {/* Desktop Buttons */}
+        <div className="d-none d-lg-flex align-items-center gap-3">
+          <button className="btn btn-light btn-sm rounded-pill">Be a Member</button>
+          <button className="btn btn-light btn-sm rounded-pill">New RFQ +</button>
+          <button className="btn btn-outline-light btn-sm rounded-circle p-2">
+            <FaBell />
+          </button>
+          <div className="dropdown">
+            <button
+              className="btn btn-light btn-sm dropdown-toggle rounded-circle p-2"
+              type="button"
+              id="profileDropdown"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <FaUserCircle size={20} />
+            </button>
+            <ul
+              className="dropdown-menu dropdown-menu-end"
+              aria-labelledby="profileDropdown"
+            >
+              <li>
+                <Link className="dropdown-item" to={`/profile/${user_id}`}>
+                  {user ? user.username : "Profile"}
+                </Link>
+              </li>
+              <li>
+                <button className="dropdown-item" onClick={logoutUser}>
+                  Logout
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Menu (Toggles On Click) */}
+      {menuOpen && (
+        <div className="container-fluid d-lg-none mt-2">
+          <form className="d-flex w-100 mb-3">
+            <input
+              className="form-control form-control-sm rounded-pill"
+              type="search"
+              placeholder="Search products..."
+              aria-label="Search"
+              style={{ border: "none" }}
+            />
+            <button
+              className="btn btn-light btn-sm ms-2 rounded-pill"
+              type="submit"
+              style={{ padding: "0.25rem 1rem" }}
+            >
+              <FaSearch />
+            </button>
+          </form>
+          <div className="d-flex flex-column align-items-center gap-2">
+            <button className="btn btn-light btn-sm w-100 rounded-pill">Be a Member</button>
+            <button className="btn btn-warning btn-sm w-100 rounded-pill">New RFQ +</button>
+            <button className="btn btn-outline-light btn-sm w-100 rounded-pill">
+              <FaBell /> Notifications
+            </button>
+            <div className="dropdown w-100">
+              <button
+                className="btn btn-light btn-sm w-100 rounded-pill dropdown-toggle"
+                type="button"
+                id="profileDropdownMobile"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <FaUserCircle className="me-2" /> Profile
+              </button>
+              <ul
+                className="dropdown-menu dropdown-menu-end w-100"
+                aria-labelledby="profileDropdownMobile"
+              >
+                <li>
+                  <Link className="dropdown-item" to={`/profile/${user_id}`}>
+                    {user ? user.username : "Profile"}
                   </Link>
                 </li>
-                <li className="nav-item me-2">
-                  <Link className="nav-link" to="/register">
-                    Register
-                  </Link>
-                </li>
-              </>
-            ) : (
-              <>
-                <li className="nav-item me-2 pe-2">
-                  <Link className="nav-link btn btn-link" to="/dashboard">
-                    Dashboard
-                  </Link>
-                </li>
-                <li className="nav-item me-2">
-                  <Link className="nav-link btn btn-link" to={`/profile/${user_id}`}>
-                    {user.username}
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <button
-                    className="nav-link btn btn-link"
-                    onClick={logoutUser}
-                    style={{ cursor: "pointer", color: "white" }}
-                  >
+                <li>
+                  <button className="dropdown-item" onClick={logoutUser}>
                     Logout
                   </button>
                 </li>
-              </>
-            )}
-          </ul>
+              </ul>
+            </div>
+          </div>
         </div>
-      </div>
+      )}
     </nav>
   );
 }

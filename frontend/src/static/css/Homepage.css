@@ -1,0 +1,77 @@
+/* Sidebar Styling */
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 250px; /* Default sidebar width */
+    height: 100vh;
+    background-color: #f8f9fa;
+    z-index: 1000; /* High z-index to overlay content */
+    padding: 20px;
+    overflow-y: auto;
+    transition: width 0.3s ease-in-out;
+}
+
+/* Collapsed Sidebar */
+.sidebar.collapsed {
+    width: 80px; /* Smaller width when collapsed */
+}
+
+/* Main Content */
+.main-content {
+    margin-left: 250px; /* Default sidebar width */
+    padding: 20px;
+    transition: margin-left 0.3s ease-in-out;
+}
+
+/* Adjust when sidebar is collapsed */
+.sidebar.collapsed + .main-content {
+    margin-left: 80px; /* Adjust margin to match collapsed sidebar */
+}
+
+/* Carousel Styling */
+.carousel-container {
+    width: 100%;
+    overflow: hidden;
+}
+
+/* Make sure the images do not shrink */
+.carousel-item img {
+    width: 100%;
+    height: 500px; /* Adjustable height */
+    object-fit: cover;
+}
+
+/* Text Overlay on Carousel */
+.carousel-caption {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: white;
+    text-align: center;
+}
+
+/* Sidebar should overlay the content when expanded */
+.sidebar.expanded {
+    width: 250px;
+}
+
+/* Ensure main content does not shrink when sidebar expands */
+.sidebar.expanded + .main-content {
+    margin-left: 250px;
+}
+
+/* Responsive Fix */
+@media (max-width: 992px) {
+    .sidebar {
+        position: fixed;
+        width: 80px; /* Default collapsed width on smaller screens */
+    }
+    .main-content {
+        margin-left: 80px;
+    }
+}
