@@ -3,7 +3,7 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
-import "../static/css/Login.css"; // Import Login/Register CSS
+// import "../static/css/Login.css"; // Import Login/Register CSS
 
 // icons
 import { FaLock } from "react-icons/fa";
@@ -95,22 +95,29 @@ const RegisterPage = () => {
 
   return (
     <>
-      <div className="">
+      <div className="login-page">
         <div className="text-center">
           <h1 className="items-center">
-            Register to <span style={{ color: "orange" }}>Easy Purchase</span>
+            Register to <span style={{ color: "var(--primary-color)" }}>Smart Supply Network</span>
           </h1>
         </div>
-        <div className="container" style={{ padding: "0px", margin: "0px" }}>
+        <div
+          className="container"
+          style={{
+            display: "flex",
+            justifyContent: "Center",
+            alignItems: "center",
+          }}
+        >
           <img
             src="./src/assets/cart.png"
             alt="Cart"
             className="img-fluid"
-            style={{
-              maxWidth: "45%",
-              height: "auto",
-              margin: "20px",
-            }}
+            // style={{
+            //   maxWidth: "45%",
+            //   height: "auto",
+            //   margin: "20px",
+            // }}
           />
           <form className="form" onSubmit={handleSubmit}>
             <div className="inputForm">

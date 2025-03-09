@@ -1,177 +1,261 @@
-/* ========================================================= */
+/* frontend/src/static/css/Login.css */
 
-.container {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    height: 80vh;
-    width: 100vw;
-  }
-  
-  .form {
-    display: flex;
+/* Light & Dark Mode Theme Variables */
+:root {
+  --primary-bg-light: #ffffff;
+  --primary-bg-dark: #1a1a2e; /* Updated for dark mode background */
+  --form-bg-light: linear-gradient(45deg, #ACBCFF, #B799FF); /* Updated gradient */
+  --form-bg-dark: linear-gradient(45deg, #6d50af, #B799FF); /* Updated gradient for dark mode */
+  --text-light: black;
+  --text-dark: white;
+  --input-border-light: #ffffff;
+  --input-border-dark: #ACBCFF; /* Updated for dark mode input border */
+  --button-hover-light: #ACBCFF; /* Updated button hover color */
+  --button-hover-dark: #B799FF; /* Updated dark mode button hover */
+}
+
+/* Default Light Mode */
+.login-page {
+  background-color: var(--primary-bg-light);
+  color: var(--text-light);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Dark Mode */
+.login-page.dark-mode {
+  background-color: var(--primary-bg-dark);
+  color: var(--text-dark);
+}
+
+/* Container */
+.login-page .container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  width: 100vw;
+}
+
+/* Main Content */
+.login-page .main-content {
+  margin-left: 0px;
+  padding: 20px;
+  transition: margin-left 0.3s ease-in-out;
+}
+
+/* Form Styling */
+.login-page .form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: var(--form-bg-light);
+  padding: 30px;
+  width: 50%;
+  max-width: 500px;
+  border-radius: 20px;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  transition: background 0.3s ease;
+}
+
+.login-page.dark-mode .form {
+  background: var(--form-bg-dark);
+}
+
+/* Hover effect */
+.login-page .form:hover {
+  background: linear-gradient(45deg, #ACBCFF, #B799FF); /* Updated hover gradient */
+}
+
+.login-page.dark-mode .form:hover {
+  background: linear-gradient(45deg, #6d50af, #B799FF); /* Updated dark mode hover gradient */
+}
+
+/* Placeholder */
+.login-page ::placeholder {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+/* Button */
+.login-page .form button {
+  align-self: flex-end;
+}
+
+/* Labels */
+.login-page .flex-column > label {
+  color: var(--text-dark);
+  font-weight: 600;
+}
+
+.login-page.dark-mode .flex-column > label {
+  color: var(--text-light);
+}
+
+/* Input Form */
+.login-page .inputForm {
+  border: 1.5px solid var(--input-border-light);
+  border-radius: 10em;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  transition: border 0.2s ease-in-out;
+}
+
+.login-page.dark-mode .inputForm {
+  border: 1.5px solid var(--input-border-dark);
+}
+
+/* Input Field */
+.login-page .input {
+  margin-left: 10px;
+  border-radius: 10rem;
+  border: none;
+  color: var(--text-light);
+  width: 100%;
+  height: 100%;
+  font-size: 16px;
+  font-weight: 500;
+  background: transparent;
+}
+
+.login-page.dark-mode .input {
+  color: var(--text-dark);
+}
+
+/* Input Focus */
+.login-page .input:focus {
+  outline: none;
+}
+
+/* Placeholder Text */
+.login-page .input::placeholder {
+  color: hsl(0, 1.6%, 37.5%);
+  font-style: italic;
+}
+
+/* Flex Row */
+.login-page .flex-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.login-page .flex-row > div > label {
+  font-size: 14px;
+  color: white;
+  font-weight: 400;
+}
+
+/* Span */
+.login-page .span {
+  font-size: 14px;
+  margin-left: 5px;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* Submit Button */
+.login-page .button-submit {
+  position: relative;
+  display: inline-block;
+  padding: 15px 30px;
+  text-align: center;
+  letter-spacing: 1px;
+  text-decoration: none;
+  background: transparent;
+  transition: ease-out 0.5s;
+  border: 2px solid;
+  border-radius: 10em;
+  box-shadow: inset 0 0 0 0 #ACBCFF;
+  margin: 20px 0 10px 0;
+  color: white;
+  font-size: 15px;
+  font-weight: 500;
+  height: 50px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.login-page .button-submit:hover {
+  color: white;
+  box-shadow: inset 0 -100px 0 0 var(--button-hover-light);
+}
+
+.login-page.dark-mode .button-submit:hover {
+  box-shadow: inset 0 -100px 0 0 var(--button-hover-dark);
+}
+
+/* Active Button */
+.login-page .button-submit:active {
+  transform: scale(0.9);
+}
+
+/* Paragraph */
+.login-page .p {
+  text-align: center;
+  color: var(--text-light);
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+.login-page.dark-mode .p {
+  color: var(--text-dark);
+}
+
+/* Button */
+.login-page .btn {
+  margin-top: 10px;
+  width: 100%;
+  height: 50px;
+  border-radius: 10em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+  gap: 10px;
+  border: 1px solid #ededef;
+  background: transparent;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+
+.login-page .btn:hover {
+  border: 1px solid white;
+  box-shadow: inset 0 -100px 0 0 var(--button-hover-light);
+}
+
+.login-page.dark-mode .btn:hover {
+  box-shadow: inset 0 -100px 0 0 var(--button-hover-dark);
+}
+
+/* Image */
+.login-page .img-fluid {
+  max-width: 45%;
+  height: auto;
+  border-radius: 20px;
+  margin: 20px;
+}
+
+/* Responsive Styles */
+@media (max-width: 700px) {
+  .login-page .container {
     flex-direction: column;
-    gap: 10px;
-    background: linear-gradient(45deg, darkorange, rgb(240, 89, 40));
-    padding: 30px;
-    width: 50%;
-    max-width: 500px;
-    border-radius: 20px;
-    font-family: -apple-system, Inter, system-ui, Avenir, Helvetica, Arial, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-    transition: background 0.3s ease;
+    align-items: flex-start;
   }
-  
-  .form:hover {
-    background: linear-gradient(45deg, darkorange, hsl(26, 100%, 73.5%));
-  }
-  
-  ::placeholder {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  }
-  
-  .form button {
-    align-self: flex-end;
-  }
-  
-  .flex-column > label {
-    color: white;
-    font-weight: 600;
-  }
-  
-  .inputForm {
-    border: 1.5px solid hsl(0, 0%, 100%);
-    border-radius: 10em;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    padding-left: 10px;
-    transition: 0.2s ease-in-out;
-  }
-  
-  .input {
-    margin-left: 10px;
-    border-radius: 10rem;
-    border: none;
-    color: black;
+
+  .login-page .form {
     width: 100%;
-    height: 100%;
-    font-size: 16px;
-    font-weight: 500;
-    background: transparent;
+    padding: 20px;
   }
-  
-  .input:focus {
-    outline: none;
-  }
-  
-  .input::placeholder {
-    color: hsl(0, 1.60%, 37.50%);
-    font-style: italic;
-  }
-  
-  .flex-row {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 10px;
-    justify-content: space-between;
-  }
-  
-  .flex-row > div > label {
-    font-size: 14px;
-    color: white;
-    font-weight: 400;
-  }
-  
-  .span {
-    font-size: 14px;
-    margin-left: 5px;
-    color: white;
-    font-weight: 500;
-    cursor: pointer;
-  }
-  
-  .button-submit {
-    position: relative;
-    display: inline-block;
-    padding: 15px 30px;
-    text-align: center;
-    letter-spacing: 1px;
-    text-decoration: none;
-    background: transparent;
-    transition: ease-out 0.5s;
-    border: 2px solid;
-    border-radius: 10em;
-    box-shadow: inset 0 0 0 0 orange;
-    margin: 20px 0 10px 0;
-    color: white;
-    font-size: 15px;
-    font-weight: 500;
-    height: 50px;
-    width: 100%;
-    cursor: pointer;
-  }
-  
-  .button-submit:hover {
-    color: white;
-    box-shadow: inset 0 -100px 0 0 orange;
-  }
-  
-  .button-submit:active {
-    transform: scale(0.9);
-  }
-  
-  
-  .p {
-    text-align: center;
-    color: black;
-    font-size: 14px;
-    margin: 5px 0;
-  }
-  
-  .btn {
-    margin-top: 10px;
-    width: 100%;
-    height: 50px;
-    border-radius: 10em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: 500;
-    gap: 10px;
-    border: 1px solid #ededef;
-    background: transparent;
-    cursor: pointer;
-    transition: 0.2s ease-in-out;
-  }
-  
-  .btn:hover {
-    border: 1px solid white;
-    box-shadow: inset 0 -100px 0 0 orange;
-  }
-  
-  .img-fluid {
-    max-width: 45%;
+
+  .login-page .img-fluid {
+    max-width: 20%;
     height: auto;
-    border-radius: 20px;
-    margin: 20px;
+    margin-bottom: 0px;
+    padding-top: 45px;
   }
-  
-  @media (max-width: 768px) {
-    .container {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-  
-    .form {
-      width: 100%;
-      padding: 20px;
-    }
-  
-    .img-fluid {
-      max-width: 50%;
-      height: auto;
-      margin-bottom: 20px;
-    }
-  }
+}

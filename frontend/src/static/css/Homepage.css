@@ -1,77 +1,177 @@
-/* Sidebar Styling */
-.sidebar {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 250px; /* Default sidebar width */
-    height: 100vh;
-    background-color: #f8f9fa;
-    z-index: 1000; /* High z-index to overlay content */
-    padding: 20px;
-    overflow-y: auto;
-    transition: width 0.3s ease-in-out;
+/* frontend/src/static/css/Homepage.css */
+
+.homepage {
+    margin-top: 45px;
+    transition: margin-left 0.3s ease-in-out, width 0.3s ease-in-out;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-/* Collapsed Sidebar */
-.sidebar.collapsed {
-    width: 80px; /* Smaller width when collapsed */
+/* Sidebar expanded and collapsed states */
+.homepage.expanded {
+    margin-left: 20%;
+    margin-right: 10%;
+    width: calc(100% - 10%);
 }
 
-/* Main Content */
-.main-content {
-    margin-left: 250px; /* Default sidebar width */
-    padding: 20px;
-    transition: margin-left 0.3s ease-in-out;
+.homepage.collapsed {
+    margin-left: 80px;
+    width: calc(100% - 80px);
 }
 
-/* Adjust when sidebar is collapsed */
-.sidebar.collapsed + .main-content {
-    margin-left: 80px; /* Adjust margin to match collapsed sidebar */
-}
-
-/* Carousel Styling */
-.carousel-container {
+/* Hero Section */
+.hero-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row; /* Ensure text is on the left, image is on the right */
+    height: 50vh;
     width: 100%;
-    overflow: hidden;
-}
-
-/* Make sure the images do not shrink */
-.carousel-item img {
-    width: 100%;
-    height: 500px; /* Adjustable height */
-    object-fit: cover;
-}
-
-/* Text Overlay on Carousel */
-.carousel-caption {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(0, 0, 0, 0.5);
-    padding: 10px 20px;
-    border-radius: 5px;
+    background-color: var(--primary-color);
     color: white;
-    text-align: center;
+    padding: 40px;
+    text-align: left;
 }
 
-/* Sidebar should overlay the content when expanded */
-.sidebar.expanded {
-    width: 250px;
+/* Content on the left */
+.hero-content {
+    max-width: 50%;
+    padding: 20px;
 }
 
-/* Ensure main content does not shrink when sidebar expands */
-.sidebar.expanded + .main-content {
-    margin-left: 250px;
+/* Image on the right */
+.hero-image {
+    max-width: 50%;
+    display: flex;
+    justify-content: center;
 }
 
-/* Responsive Fix */
+.hero-image img {
+    max-width: 100%;
+    height: auto;
+}
+
+.hero-content h1 {
+    font-size: 2.8rem;
+    font-weight: bold;
+    line-height: 1.2;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    /* font-weight: bold; */
+    margin: 15px 0;
+}
+
+/* Button Styles */
+.hero-buttons {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.btn-primary, .btn-outline {
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    text-transform: uppercase;
+}
+
+.btn-primary {
+    background: #ffffff;
+    color: #B799FF;
+    border: none;
+    box-shadow: 0px 4px 6px rgba(255, 255, 255, 0.1);
+}
+
+.btn-outline {
+    background: transparent;
+    color: #ffffff;
+    border: 2px solid white;
+}
+
+.btn-primary:hover {
+    /* background: #e3e3e3; */
+    background: var(--secondary-color);
+    color: white;
+    transform: scale(1.05);
+    
+}
+
+.btn-outline:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+}
+
+/* Responsive Adjustments */
 @media (max-width: 992px) {
-    .sidebar {
-        position: fixed;
-        width: 80px; /* Default collapsed width on smaller screens */
+    .homepage.expanded {
+        margin-left: 180px;
+        width: 80%;
     }
-    .main-content {
+
+    .homepage.collapsed {
         margin-left: 80px;
+        width: 80%;
+    }
+
+    .hero-section {
+        flex-direction: column;
+        text-align: center;
+        height: auto;
+    }
+
+    .hero-content, .hero-image {
+        max-width: 100%;
+        padding: 20px;
+    }
+
+    .hero-image {
+        margin-top: 20px;
+    }
+
+    /* .hero-content {
+        width: 100%;
+    } */
+    
+    .hero-content h1 {
+        font-size: 2.4rem;
+    }
+    
+    .hero-content p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+
+    .homepage.expanded {
+        margin-right: 10px;
+        margin-left: 50px;
+        width: calc(100% - 30px);
+    }
+
+    .homepage.collapsed {
+        margin-left: 50px;
+        width: calc(100% - 25px);
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-content p {
+        font-size: 0.9rem;
+    }
+
+    .btn-primary, .btn-outline {
+        padding: 10px 20px;
+        font-size: 0.9rem;
     }
 }

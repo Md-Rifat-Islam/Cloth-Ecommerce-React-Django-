@@ -1,0 +1,77 @@
+/* frontend/src/static/css/CategoryOffcanvas.css */
+
+.offcanvas-btn {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background-color: var(--primary-color);
+  color: var(--sidebar-text-color);
+  border: none;
+  padding: 12px 18px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out, transform 0.2s;
+  margin-top: 80px;
+  box-shadow: 2px 2px 5px var(--button-shadow);
+}
+
+.offcanvas-btn:hover {
+  background-color: var(--secondary-color);
+  transform: scale(1.05);
+  /* color: var(--button-text-color); */
+}
+
+.offcanvas {
+  background-color: var(--background-color);
+  color: var(--sidebar-text-color);
+  border-left: 2px solid var(--primary-color);
+}
+
+.offcanvas-header {
+  background: var(--sidebar-background);
+  color: var(--sidebar-text-color);
+  border-bottom: 1px solid var(--primary-color);
+}
+
+.offcanvas-header h5 {
+  font-weight: bold;
+}
+
+.btn-close {
+  filter: invert(1);
+}
+
+.offcanvas-body {
+  padding: 20px;
+}
+
+.offcanvas-body h6 {
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--secondary-color);
+  margin-bottom: 10px;
+}
+
+.offcanvas-body .btn-check + .btn {
+  margin: 5px 0;
+  border-radius: 6px;
+  font-weight: 600;
+  background-color: var(--button-bg-color);
+  color: var(--button-text-color);
+  border: 2px solid var(--secondary-color);
+  transition: all 0.3s ease-in-out;
+}
+
+.offcanvas-body .btn-check:checked + .btn {
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+.offcanvas-body .btn-check + .btn:hover {
+  background-color: var(--third-color);
+  color: var(--sidebar-text-color);
+  transform: scale(1.03);
+}
+

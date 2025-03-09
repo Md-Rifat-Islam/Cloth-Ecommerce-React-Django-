@@ -15,7 +15,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 #---------------------------------------------------------
-# core/urls.py
+# backend/core/urls.py
 from django.contrib import admin
 # from posts.api.views import google_auth
 from django.urls import path, include

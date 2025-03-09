@@ -6,6 +6,8 @@ import AuthContext from "../context/AuthContext";
 import { Link } from "react-router-dom";
 import { FaSearch, FaBell, FaBars, FaUserCircle } from "react-icons/fa";
 
+import "../static/css/Navbar.css";
+
 function Navbar() {
   const { user, logoutUser } = useContext(AuthContext);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -22,12 +24,7 @@ function Navbar() {
   }
 
   return (
-    <nav
-      className="navbar navbar-expand-lg navbar-dark fixed-top"
-      // style={{ backgroundColor: "#FF6B6B", boxShadow: "0 2px 10px rgba(0, 0, 0, 0.1)" }}
-      // style={{ backgroundColor: "rgb(255,150,26)" }}
-      style={{ backgroundColor: "#ff8c00" }}
-    >
+    <nav className="navbar navbar-expand-lg navbar-dark fixed-top">
       <div className="container-fluid d-flex align-items-center">
         {/* Logo */}
         <Link className="navbar-brand d-flex align-items-center" to="/">
@@ -38,7 +35,7 @@ function Navbar() {
             height="40"
             className="me-2"
           />
-          <span className="fw-bold text-white">Easy Purchase</span>
+          <span className="fw-bold text-white">Smart Supply Network</span>
         </Link>
 
         {/* Large Screen Search Bar */}
@@ -72,8 +69,13 @@ function Navbar() {
 
         {/* Desktop Buttons */}
         <div className="d-none d-lg-flex align-items-center gap-3">
-          <button className="btn btn-light btn-sm rounded-pill">Be a Member</button>
-          <button className="btn btn-light btn-sm rounded-pill">New RFQ +</button>
+
+          <button className="btn btn-light btn-sm rounded-pill">
+            Be a Member
+          </button>
+          <button className="btn btn-light btn-sm rounded-pill">
+            New RFQ +
+          </button>
           <button className="btn btn-outline-light btn-sm rounded-circle p-2">
             <FaBell />
           </button>
@@ -108,8 +110,11 @@ function Navbar() {
 
       {/* Mobile Menu (Toggles On Click) */}
       {menuOpen && (
-        <div className="container-fluid d-lg-none mt-2">
-          <form className="d-flex w-100 mb-3">
+        <div
+          className="container-fluid d-lg-none mt-2"
+          style={{ background: "transparent" }}
+        >
+          <form className="d-flex w-10 mb-3">
             <input
               className="form-control form-control-sm rounded-pill"
               type="search"
@@ -126,8 +131,12 @@ function Navbar() {
             </button>
           </form>
           <div className="d-flex flex-column align-items-center gap-2">
-            <button className="btn btn-light btn-sm w-100 rounded-pill">Be a Member</button>
-            <button className="btn btn-warning btn-sm w-100 rounded-pill">New RFQ +</button>
+            <button className="btn btn-light btn-sm w-100 rounded-pill">
+              Be a Member
+            </button>
+            <button className="btn btn-warning btn-sm w-100 rounded-pill">
+              New RFQ +
+            </button>
             <button className="btn btn-outline-light btn-sm w-100 rounded-pill">
               <FaBell /> Notifications
             </button>
@@ -143,7 +152,7 @@ function Navbar() {
               </button>
               <ul
                 className="dropdown-menu dropdown-menu-end w-100"
-                aria-labelledby="profileDropdownMobile"
+                aria-labelledby="profileDropdownMobile" 
               >
                 <li>
                   <Link className="dropdown-item" to={`/profile/${user_id}`}>

@@ -1,27 +1,44 @@
-
-
 :root {
-  /* Defines default font family for the entire document */
+  --primary-color: #B799FF;
+  --secondary-color: #ACBCFF;
+  --third-color: #AEE2FF;
+  --fourth-color: #E6FFFD;
+  --background-color: white;
+  --border-color: #B799FF;
+  --sidebar-background: linear-gradient(145deg, #ACBCFF, #ACBCFF);
+  --sidebar-text-color: white;
+  --sidebar-hover-bg: white;
+  --sidebar-hover-color: #ACBCFF;
+  --button-bg-color: white;
+  --button-text-color: #ACBCFF;
+  --button-shadow: rgba(0, 0, 0, 0.2);
+  
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  /* Sets default line height for better readability */
   line-height: 1.5;
-  /* Defines base font weight */
   font-weight: 400;
-  /* Enables automatic adaptation to light and dark mode */
   color-scheme: white dark;
-  /* Sets the default text color with slight transparency */
   color: rgba(255, 255, 255, 0.87);
-  /* Sets the default background color for dark mode */
   background-color: #242424;
-  /* Prevents font synthesis (i.e., the browser generating bold/italic versions if missing) */
   font-synthesis: none;
-  /* Optimizes text rendering for better legibility */
   text-rendering: optimizeLegibility;
-  /* Smooths font rendering in WebKit-based browsers (Chrome, Safari) */
   -webkit-font-smoothing: antialiased;
-  /* Smooths font rendering in Firefox for macOS */
   -moz-osx-font-smoothing: grayscale;
 }
+
+.dark-theme {
+  --primary-color: #333;
+  --secondary-color: #555;
+  --background-color: #121212;
+  --sidebar-background: linear-gradient(145deg, #6d50af, #6d50af);
+  --sidebar-text-color: #fff;
+  --sidebar-hover-bg: #fff;
+  --sidebar-hover-color: #ACBCFF;
+  --button-bg-color: #444;
+  --button-text-color: #ACBCFF;
+  --button-shadow: rgba(255, 255, 255, 0.2);
+}
+
+
 html {
   height: 100%;
   width: 100%;
@@ -31,13 +48,21 @@ html {
 }
 
 body {
-  background: linear-gradient(45deg, hsl(26, 100%, 73.5%), hsl(0, 0%, 100%));
+  /* background: linear-gradient(45deg, hsl(26, 100%, 73.5%), hsl(0, 0%, 100%)); */
   height: 100%;
   width: 100%;
   margin: 0;
   padding: 0;
+  padding-left: 2%;
   overflow-x: hidden;
 }
+
+/* Main Content Styling */
+/* .main-content {
+    padding: auto;
+    flex-grow: 1;
+} */
+
 a {
   font-weight: 500;
   color: #ff9d64;
@@ -52,14 +77,8 @@ a:hover {
 
 
 
-
 h1 {
   font-size: larger;
-}
-
-button:focus,
-button:focus-visible {
-  /* Add focus styles if needed */
 }
 
 @media (prefers-color-scheme: light) {
@@ -73,3 +92,10 @@ button:focus-visible {
   }
 }
 
+  /* rgb(183, 153, 255)   #B799FF
+
+rgb(172, 188, 255)   #ACBCFF
+
+rgb(174, 226, 255)   #AEE2FF
+
+rgb(230, 255, 253)   #E6FFFD */
